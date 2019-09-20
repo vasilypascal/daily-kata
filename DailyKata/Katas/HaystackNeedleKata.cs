@@ -2,11 +2,10 @@
 
 namespace DailyKata
 {
-    public class Kata
+    public class HaystackNeedleKata
     {
         public static string FindNeedle(object[] haystack)
         {
-            //Code goes here!
             throw new NotImplementedException();
         }
     }
