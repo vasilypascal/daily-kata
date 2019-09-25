@@ -4,7 +4,7 @@ namespace DailyKata
 {
     public class StringCalculatorKata
     {
-        public static int Calculate(string input)
+        public static double Calculate(string input)
         {
             throw new NotImplementedException();
         }
