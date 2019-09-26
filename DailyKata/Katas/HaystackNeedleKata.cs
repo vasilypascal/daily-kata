@@ -6,7 +6,18 @@ namespace DailyKata
     {
         public static string FindNeedle(object[] haystack)
         {
-            throw new NotImplementedException();
+            if (haystack == null)
+                throw new ArgumentNullException(nameof(haystack));
+
+            for (int i = 0; i < haystack.Length; i++)
+            {
+                if (haystack[i] is string)
+                {
+                    if (haystack[i] == "needle")
+                        return ("found the needle at position " + i);
+                }
+            }
+            return "needle not found";
         }
     }
 }

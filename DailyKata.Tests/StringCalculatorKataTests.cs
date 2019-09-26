@@ -54,7 +54,7 @@ namespace DailyKata.Tests
         [Theory]
         [InlineData(",\n1,2,3,4,5,6,7", 28)]
         [InlineData("|\n2|9|5|20|8|16", 60)]
-        [InlineData(";\n8.23;1.379;5,30;999", 1043.609d)]
+        [InlineData(";\n8.23;1.379;5;30;999", 1043.609d)]
         public void Calculate_MultipleNumbers_WithDifferentSeparators_ReturnsSumOfNumbers(string input, double expected)
         {
             var actual = StringCalculatorKata.Calculate(input);
@@ -83,7 +83,8 @@ namespace DailyKata.Tests
         {
             var exception = Record.Exception(() => StringCalculatorKata.Calculate(input));
 
-            Assert.Equal("Negative numbers not supported", exception.Message);
+            Assert.Equal("Negative numbers not supported\r\nParameter name: input", exception.Message);
+            //Assert.Equal("Negative numbers not supported", exception.Message);
         }
 
         [Fact]

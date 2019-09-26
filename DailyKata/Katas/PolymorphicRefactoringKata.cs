@@ -2,10 +2,8 @@
 
 namespace DailyKata.Katas
 {
-    public class PolymorphicRefactoringKata
+    public class PolymorphicRefactoringKata : BaseEmployee
     {
-        private readonly JobTitle _jobTitle;
-
         public PolymorphicRefactoringKata(JobTitle jobTitle)
         {
             _jobTitle = jobTitle;
@@ -13,28 +11,36 @@ namespace DailyKata.Katas
 
         public double GetSalary()
         {
+
             switch (_jobTitle)
             {
                 case JobTitle.Junior:
                     return GetBaseSalary();
 
                 case JobTitle.Middle:
-                    return GetBaseSalary() + 75;
+                    return GetBaseSalary(75);
 
                 case JobTitle.Senior:
-                    return GetBaseSalary() + 75 + 20;
+                    return GetBaseSalary(75, 20);
 
                 case JobTitle.Consultant:
-                    return GetBaseSalary() + 75 + 25 + 15;
-
+                    return GetBaseSalary(75, 25, 15);
                 default:
                     throw new InvalidOperationException("Invalid job title");
             }
         }
 
-        private double GetBaseSalary()
+        public double GetBaseSalary(double middlebonus)
         {
-            return 100;
+            return GetBaseSalary() + middlebonus;
+        }
+        public double GetBaseSalary(int middleBonus, int seniorBonus)
+        {
+            return GetBaseSalary() + middleBonus + seniorBonus;
+        }
+        public double GetBaseSalary(int middleBonus, int seniorBonus, int consultantBonus)
+        {
+            return GetBaseSalary() + middleBonus + seniorBonus + consultantBonus;
         }
     }
 
@@ -47,3 +53,21 @@ namespace DailyKata.Katas
         Consultant
     }
 }
+////constructor
+//switch (_jobTitle)
+//{
+//    case JobTitle.Junior:
+//        bonus = 0;
+//        break;
+//    case JobTitle.Middle:
+//        bonus = 75;
+//        break;
+//    case JobTitle.Senior:
+//        bonus = 75 + 20;
+//        break;
+//    case JobTitle.Consultant:
+//        bonus = 75 + 25 + 15;
+//        break;
+//    default:
+//        throw new InvalidOperationException("Invalid job title");
+//}
